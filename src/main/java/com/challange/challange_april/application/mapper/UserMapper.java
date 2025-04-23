@@ -11,7 +11,7 @@ import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
 @Mapper(componentModel = SPRING, uses = PhoneMapper.class)
 public interface UserMapper {
 
-    @Mapping(target = "active", expression = "java(true)")
+    @Mapping(target = "isactive", expression = "java(true)")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "created", ignore = true)
     @Mapping(target = "modified", ignore = true)

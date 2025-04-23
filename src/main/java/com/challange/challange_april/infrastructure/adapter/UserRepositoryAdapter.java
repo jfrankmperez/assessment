@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+import static com.challange.challange_april.application.constants.UserConstants.EMAIL_ALREADY_REGISTERED_MESSAGE;
+
 @Component
 @RequiredArgsConstructor
 public class UserRepositoryAdapter implements UserRepositoryPort {
@@ -24,7 +26,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
     public UserDtoResponse registerUser(UserDtoRequest userDtoRequest) {
     userRepository.findByEmail(userDtoRequest.getEmail())
             .ifPresent(userAlreadyRegistered ->{
-                throw new EmailAlreadyRegisterException("Email exists");
+                throw new EmailAlreadyRegisterException(String.format(EMAIL_ALREADY_REGISTERED_MESSAGE, userAlreadyRegistered.getEmail()));
                     }
             );
         UserEntity userToRegister = userMapper.toEntity(userDtoRequest);

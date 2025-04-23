@@ -1,8 +1,7 @@
 package com.challange.challange_april.application.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,22 +10,27 @@ import lombok.Setter;
 
 import java.util.List;
 
+import static com.challange.challange_april.application.constants.UserConstants.*;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDtoRequest {
 
-    @NotBlank(message = "El nombre es obligatorio")
+    @NotBlank(message = NAME_VALIDATION_BLANK_MESSAGE)
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = NAME_VALIDATION_MESSAGE)
     private String name;
 
-    @NotBlank(message = "El correo es obligatorio")
-    @Email(message = "El correo no tiene un formato válido")
+    @NotBlank(message = EMAIL_VALIDATION_BLANK_MESSAGE)
+    @Email(message = EMAIL_VALIDATION_MESSAGE)
     private String email;
 
-    @NotBlank(message = "La contraseña es obligatoria")
+    @NotBlank(message = PASSWORD_VALIDATION_BLANK_MESSAGE)
+    @Pattern(regexp = "^(?=.*[A-Z])(?=(?:.*\\d){2})(?!.*\\d{3,})[a-zA-Z\\d]{8,12}$", message = PASSWORD_VALIDATION_MESSAGE)
     private String password;
 
-    @NotEmpty(message = "Debe contener al menos un teléfono")
+    @Valid
+    @NotEmpty(message = PHONE_VALIDATION_MESSAGE)
     private List<PhoneDtoRequest> phones;
 }

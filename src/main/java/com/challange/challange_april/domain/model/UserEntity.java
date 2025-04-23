@@ -38,7 +38,8 @@ public class UserEntity {
 
     private String token;
 
-    private boolean active;
+    @Column(name = "is_active")
+    private boolean isactive;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PhoneEntity> phones;

@@ -28,5 +28,5 @@ public class UserDtoResponse {
 
     private String token;
 
-    private boolean active;
+    private boolean isactive;
 }
