@@ -3,6 +3,7 @@ package com.challange.challange_april.infrastructure.config;
 import com.challange.challange_april.application.dto.ErrorResponseDto;
 import com.challange.challange_april.domain.exceptions.EmailAlreadyRegisterException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.BindingResult;
@@ -10,6 +11,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.support.WebExchangeBindException;
 
@@ -19,6 +21,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
+@RequestMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 public class UserExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)

@@ -7,6 +7,7 @@ import com.challange.challange_april.application.port.output.UserRepositoryPort;
 import com.challange.challange_april.domain.exceptions.EmailAlreadyRegisterException;
 import com.challange.challange_april.domain.model.UserEntity;
 import com.challange.challange_april.infrastructure.adapter.repository.UserRepository;
+import com.challange.challange_april.infrastructure.config.JwtConfig;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -20,6 +21,7 @@ import static com.challange.challange_april.application.constants.UserConstants.
 public class UserRepositoryAdapter implements UserRepositoryPort {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final JwtConfig jwtConfig;
 
 
     @Override
@@ -34,7 +36,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
         userToRegister.setCreated(LocalDateTime.now());
         userToRegister.setModified(LocalDateTime.now());
         userToRegister.setLastlogin(LocalDateTime.now());
-        userToRegister.setToken(UUID.randomUUID().toString());
+        userToRegister.setToken(jwtConfig.generateJwts(userToRegister.getEmail()));
         userToRegister.getPhones().forEach(
                 phoneEntity -> phoneEntity.setUser(userToRegister));
 
