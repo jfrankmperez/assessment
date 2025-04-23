@@ -1,9 +1,7 @@
 package com.challange.challange_april.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,13 +18,19 @@ import lombok.Setter;
 public class PhoneEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "number")
     private String number;
 
-    private String cityCode;
+    @Column(name = "citycode")
+    private String citycode;
 
-    private String countryCode;
+    @Column(name = "countrycode")
+    private String countrycode;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private UserEntity user;
 }

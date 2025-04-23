@@ -14,9 +14,9 @@ public class PhoneDtoRequest {
     private String number;
 
     @NotBlank
-    private String cityCode;
+    private String citycode;
 
     @NotBlank
-    private String countryCode;
+    private String countrycode;
 
 }

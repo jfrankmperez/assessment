@@ -10,6 +10,7 @@ import com.challange.challange_april.infrastructure.adapter.repository.UserRepos
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component
@@ -28,6 +29,12 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
             );
         UserEntity userToRegister = userMapper.toEntity(userDtoRequest);
         userToRegister.setId(UUID.randomUUID().toString());
+        userToRegister.setCreated(LocalDateTime.now());
+        userToRegister.setModified(LocalDateTime.now());
+        userToRegister.setLastlogin(LocalDateTime.now());
+        userToRegister.setToken(UUID.randomUUID().toString());
+        userToRegister.getPhones().forEach(
+                phoneEntity -> phoneEntity.setUser(userToRegister));
 
         return userMapper.toDtoResponse(userRepository.save(userToRegister));
     }

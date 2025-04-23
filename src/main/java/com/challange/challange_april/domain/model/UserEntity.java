@@ -29,17 +29,17 @@ public class UserEntity {
 
     private String password;
 
-    private LocalDateTime create;
+    private LocalDateTime created;
 
     private LocalDateTime modified;
 
-    private LocalDateTime lastLogin;
+    @Column(name = "last_login")
+    private LocalDateTime lastlogin;
 
     private String token;
 
-    private boolean isActive;
+    private boolean active;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "usuario_id")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<PhoneEntity> phones;
 }

@@ -24,9 +24,9 @@ public class UserDtoResponse {
 
     private LocalDateTime modified;
 
-    private LocalDateTime lastLogin;
+    private LocalDateTime lastlogin;
 
     private String token;
 
-    private boolean isActive;
+    private boolean active;
 }
