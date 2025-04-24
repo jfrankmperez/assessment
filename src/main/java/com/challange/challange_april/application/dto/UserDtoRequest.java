@@ -3,10 +3,7 @@ package com.challange.challange_april.application.dto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import static com.challange.challange_april.application.constants.UserConstants.
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserDtoRequest {
