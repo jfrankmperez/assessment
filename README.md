@@ -19,7 +19,7 @@ Este proyecto es una evaluación técnica que implementa funcionalidades de regi
 - Gradle
 - H2 Database: Base de datos embebida para pruebas locales
 - Spring Security: Para autenticación y autorización
-- JUnit 5: Utilizado para pruebas unitarias
+- JUnit 5 y Mockito: Utilizado para pruebas unitarias
 - JWT: Para generación de tokens
 - MapStruct: Para mapeo de entidades y DTOs
 - Lombok: Reducción de boilerplate
@@ -64,9 +64,7 @@ gradlew.bat bootRun  # Windows
 La aplicación se ejecuta en `http://localhost:8081`.
 
 ### Endpoints de la API:
-- `POST /api/v1/user/sign-up` - Registro de usuario
-- `PATCH /api/v1/user/log-in` - Inicio de sesión
-- `GET /api/v1/user/all` - Obtener todos los usuarios
+- `POST /api/v1/user` - Registro de usuario
 
 ## Pruebas
 ```bash
@@ -83,5 +81,5 @@ Resultados disponibles en: `build/reports/tests/test/index.html`
 - Cambia el puerto en `application.yml` si 8081 está en uso:
 ```yaml
 server:
-  port: 8082
+  port: 8080
 ```
