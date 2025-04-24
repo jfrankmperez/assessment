@@ -14,11 +14,6 @@ import static org.mapstruct.ReportingPolicy.IGNORE;
 public interface UserMapper {
 
     @Mapping(target = "isactive", expression = "java(true)")
-    /*@Mapping(target = "id", ignore = true)
-    @Mapping(target = "created", ignore = true)
-    @Mapping(target = "modified", ignore = true)
-    @Mapping(target = "lastlogin", ignore = true)
-    @Mapping(target = "token", ignore = true)*/
     UserEntity toEntity (UserDtoRequest userDtoRequest);
 
     UserDtoResponse toDtoResponse(UserEntity userEntity);

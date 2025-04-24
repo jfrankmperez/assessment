@@ -9,10 +9,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import static org.mapstruct.MappingConstants.ComponentModel.SPRING;
+import static org.mapstruct.ReportingPolicy.IGNORE;
 
-@Mapper(componentModel = SPRING)
+@Mapper(componentModel = SPRING, unmappedTargetPolicy = IGNORE)
 public interface PhoneMapper {
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "user", ignore = true)
     PhoneEntity toEntity (PhoneDtoRequest phoneDtoRequest);
 }
