@@ -1,29 +1,24 @@
 package com.challange.challange_april;
 
-import com.challange.challange_april.application.dto.PhoneDtoRequest;
 import com.challange.challange_april.application.dto.UserDtoRequest;
 import com.challange.challange_april.application.dto.UserDtoResponse;
 import com.challange.challange_april.application.mapper.UserMapper;
 import com.challange.challange_april.domain.exceptions.EmailAlreadyRegisterException;
-import com.challange.challange_april.domain.model.PhoneEntity;
 import com.challange.challange_april.domain.model.UserEntity;
 import com.challange.challange_april.infrastructure.adapter.UserRepositoryAdapter;
 import com.challange.challange_april.infrastructure.adapter.repository.UserRepository;
-import com.challange.challange_april.infrastructure.config.JwtConfig;
+import com.challange.challange_april.infrastructure.config.security.JwtConfig;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
-
 
 @SpringBootTest
 class ChallangeAprilApplicationTests {

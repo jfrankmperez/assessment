@@ -1,4 +1,4 @@
-package com.challange.challange_april.infrastructure.config;
+package com.challange.challange_april.infrastructure.config.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

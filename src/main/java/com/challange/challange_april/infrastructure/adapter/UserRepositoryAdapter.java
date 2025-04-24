@@ -7,12 +7,11 @@ import com.challange.challange_april.application.port.output.UserRepositoryPort;
 import com.challange.challange_april.domain.exceptions.EmailAlreadyRegisterException;
 import com.challange.challange_april.domain.model.UserEntity;
 import com.challange.challange_april.infrastructure.adapter.repository.UserRepository;
-import com.challange.challange_april.infrastructure.config.JwtConfig;
+import com.challange.challange_april.infrastructure.config.security.JwtConfig;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
 
 import static com.challange.challange_april.application.constants.UserConstants.EMAIL_ALREADY_REGISTERED_MESSAGE;
 
@@ -21,8 +20,8 @@ import static com.challange.challange_april.application.constants.UserConstants.
 public class UserRepositoryAdapter implements UserRepositoryPort {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
     private final JwtConfig jwtConfig;
-
 
     @Override
     public UserDtoResponse registerUser(UserDtoRequest userDtoRequest) {
@@ -31,11 +30,10 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 throw new EmailAlreadyRegisterException(String.format(EMAIL_ALREADY_REGISTERED_MESSAGE, userAlreadyRegistered.getEmail()));
                     }
             );
+        String password = passwordEncoder.encode(userDtoRequest.getPassword());
+
         UserEntity userToRegister = userMapper.toEntity(userDtoRequest);
-        userToRegister.setId(UUID.randomUUID().toString());
-        userToRegister.setCreated(LocalDateTime.now());
-        userToRegister.setModified(LocalDateTime.now());
-        userToRegister.setLastlogin(LocalDateTime.now());
+        userToRegister.setPassword(password);
         userToRegister.setToken(jwtConfig.generateJwts(userToRegister.getEmail()));
         userToRegister.getPhones().forEach(
                 phoneEntity -> phoneEntity.setUser(userToRegister));
