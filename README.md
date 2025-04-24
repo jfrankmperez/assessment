@@ -11,7 +11,7 @@
 - [Problemas Comunes](#problemas-comunes)
 
 ## Descripción General
-Este proyecto es una evaluación técnica que implementa funcionalidades de registro e inicio de sesión de usuarios utilizando Spring Boot y Gradle.
+Este proyecto es una evaluación técnica que implementa funcionalidades de registro de usuarios utilizando Spring Boot y Gradle.
 
 ## Tecnologías Utilizadas
 - Spring Boot: 3.4.4
@@ -61,7 +61,7 @@ gradlew.bat build # Windows
 ./gradlew bootRun  # macOS/Linux
 gradlew.bat bootRun  # Windows
 ```
-La aplicación se ejecuta en `http://localhost:8081`.
+La aplicación se ejecuta en `http://localhost:8080`.
 
 ### Endpoints de la API:
 - `POST /api/v1/user` - Registro de usuario
