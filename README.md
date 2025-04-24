@@ -51,7 +51,6 @@ root/
 
 ## Construcción del Proyecto
 ```bash
-cd codigo
 ./gradlew build   # macOS/Linux
 gradlew.bat build # Windows
 ```
@@ -78,7 +77,7 @@ Resultados disponibles en: `build/reports/tests/test/index.html`
 - Asegúrate de estar en el directorio correcto antes de ejecutar Gradle.
 
 **Conflictos de Puerto**
-- Cambia el puerto en `application.yml` si 8081 está en uso:
+- Cambia el puerto en `application.yml` si 8080 está en uso:
 ```yaml
 server:
   port: 8080
