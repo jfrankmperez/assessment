@@ -1,0 +1,39 @@
+{
+	"info": {
+		"_postman_id": "ca05e066-bf8d-4790-b535-3c97faf199d2",
+		"name": "Challange_April",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3614019"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"juanas@rodriguez.com\",\r\n    \"password\": \"J12rodriguez\",\r\n    \"phones\": [\r\n        {\r\n            \"number\": \"123456789\",\r\n            \"citycode\": \"1\",\r\n            \"countrycode\": \"67\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/user",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
